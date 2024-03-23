@@ -6,6 +6,7 @@ export function SettingsScreen() {
     <View style={styles.settingsView}>
             <TouchableHighlight
                 style={styles.circle}
+                onPress={() => alert('Yaay!')}
             >
                 <Text> Mom, look, I am a circle! </Text>
             </TouchableHighlight>
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
         borderRadius: Math.round(Dimensions.get('window').width + Dimensions.get('window').height) / 2,
         width: Dimensions.get('window').width * 0.2,
         height: Dimensions.get('window').width * 0.2,
-        backgroundColor: '#fff',
+        backgroundColor: '#f00',
         justifyContent: 'center',
         alignItems: 'center'
     },

@@ -1,17 +1,35 @@
 import * as React from 'react';
-import { Text, View } from 'react-native';
-import MapView from 'react-native-maps';
+import { View, Text, StyleSheet, Button } from 'react-native';
+let test = 0
 
 export function HomeScreen() {
     return (
-      <MapView
-      style={{ flex: 1 }}
-      initialRegion={{
-        latitude: -20.964885623394416,
-        longitude: 55.6592007697144,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
-      }}
-    />
+        <View style={styles.container}>
+            <Text>Jam lootbox here</Text>
+            <Button
+            title='Click me'
+            onPress={() => {
+                test += 1
+                alert(test)
+            }}
+            ></Button>
+        </View>
     );
-  }
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column-reverse',
+        alignItems: 'center',
+        marginBottom: 20,
+    },
+    input: {
+        height: 40,
+        borderColor: 'gray',
+        borderWidth: 1,
+        width: '80%',
+    },
+});

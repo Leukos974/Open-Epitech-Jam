@@ -3,9 +3,10 @@ import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeScreen } from './components/HomeScreen';
+import { MapScreen } from './components/MapScreen';
 import { SettingsScreen } from './components/Settings';
 import { FeedScreen } from './components/FeedScreen';
-import { FontAwesome, Ionicons } from '@expo/vector-icons';
+import { Entypo, FontAwesome, Ionicons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 
@@ -17,7 +18,17 @@ function Navigator() {
         component={HomeScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home" color={color} size={size} />
+            <Entypo name="home" color={color} size={size} />
+          ),
+
+        }}
+      />
+      <Tab.Screen
+        name="Map"
+        component={MapScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Entypo name="globe" color={color} size={size} />
           ),
 
         }}
