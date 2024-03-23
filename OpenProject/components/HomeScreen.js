@@ -1,18 +1,15 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { ApplicationCamera } from './Camera.js'
 let test = 0
 
 export function HomeScreen() {
     return (
         <View style={styles.container}>
-            <Text>Jam lootbox here</Text>
-            <Button
-            title='Click me'
-            onPress={() => {
-                test += 1
-                alert(test)
-            }}
-            ></Button>
+            <Text>Open the jam !</Text>
+            <TouchableOpacity onPress={() => console.log("Hello world !")}>
+                <Image source={require('../assets/jam.jpg')} style={{ width: 200, height: 200 }} />
+            </TouchableOpacity>
         </View>
     );
 }

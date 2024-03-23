@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeScreen } from './components/HomeScreen';
 import { MapScreen } from './components/MapScreen';
 import { SettingsScreen } from './components/Settings';
 import { FeedScreen } from './components/FeedScreen';
-import { Entypo, FontAwesome, Ionicons } from '@expo/vector-icons';
+import { Entypo, FontAwesome, Ionicons, MaterialIcons } from '@expo/vector-icons';
+import { ApplicationCamera } from './components/Camera';
 
 const Tab = createBottomTabNavigator();
 
@@ -29,6 +29,16 @@ function Navigator() {
         options={{
           tabBarIcon: ({ color, size }) => (
             <Entypo name="globe" color={color} size={size} />
+          ),
+
+        }}
+      />
+      <Tab.Screen
+        name="Photo"
+        component={ApplicationCamera}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="add-a-photo" color={color} size={size} />
           ),
 
         }}
