@@ -1,11 +1,15 @@
 import * as React from 'react';
-import { Text, View, Dimensions, StyleSheet, Image } from 'react-native';
-import UploadImage from './UploadImage.js';
+import { Text, View, TouchableHighlight, Dimensions, StyleSheet } from 'react-native';
 
 export function SettingsScreen() {
-    return (
-        <View style={styles.settingsView}>
-            <UploadImage />
+  return (
+    <View style={styles.settingsView}>
+            <TouchableHighlight
+                style={styles.circle}
+                onPress={() => alert('Yaay!')}
+            >
+                <Text> Mom, look, I am a circle! </Text>
+            </TouchableHighlight>
             <Text style={
                 {
                     justifyContent: 'center',
@@ -28,16 +32,5 @@ const styles = StyleSheet.create({
         backgroundColor: '#f00',
         justifyContent: 'center',
         alignItems: 'center'
-    },
-    profileImgContainer: {
-        marginLeft: 8,
-        height: 80,
-        width: 80,
-        borderRadius: 40,
-    },
-    profileImg: {
-        height: 80,
-        width: 80,
-        borderRadius: 40,
     },
 });

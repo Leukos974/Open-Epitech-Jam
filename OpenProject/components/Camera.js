@@ -50,7 +50,6 @@ export function ApplicationCamera() {
 
     // Picture handling
     return (
-        // If a picture was taken, show the picture and buttons to save or retake it
         <View style={styles.container}>
             {!image ?
                 <Camera
