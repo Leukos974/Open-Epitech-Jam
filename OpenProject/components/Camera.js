@@ -39,13 +39,18 @@ export function ApplicationCamera() {
             }
         }
     }
+
+    const retakePicture = () => {
+        setImage(null);
+    }
+
     if (hasCameraPermission === false) {
         return <Text>No access to camera</Text>;
     }
 
+    // Picture handling
     return (
         <View style={styles.container}>
-            // Check if the image is an image was taken
             {!image ?
                 <Camera
                     ref={cameraRef}
@@ -76,6 +81,10 @@ export function ApplicationCamera() {
                     <Button
                         title="Save image"
                         onPress={saveImage}
+                    />
+                    <Button
+                        title="Retake picture"
+                        onPress={retakePicture}
                     />
                     <Image
                         source={{ uri: image }}
