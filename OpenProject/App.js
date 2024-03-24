@@ -5,6 +5,7 @@ import { HomeScreen } from './components/HomeScreen';
 import { MapScreen } from './components/MapScreen';
 import { SettingsScreen } from './components/Settings';
 import { FeedScreen } from './components/FeedScreen';
+import { Database } from './components/Database';
 import { Entypo, FontAwesome, Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { ApplicationCamera } from './components/Camera';
 
@@ -46,6 +47,15 @@ function Navigator() {
       <Tab.Screen
       name="Feed"
       component={FeedScreen}
+      options={{
+        tabBarIcon: ({ color, size }) => (
+          <FontAwesome name="comment-o" color={color} size={size} />
+        ),
+      }}
+      />
+      <Tab.Screen
+      name="db"
+      component={Database}
       options={{
         tabBarIcon: ({ color, size }) => (
           <FontAwesome name="comment-o" color={color} size={size} />
