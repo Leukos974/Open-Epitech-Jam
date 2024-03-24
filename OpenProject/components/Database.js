@@ -1,57 +1,66 @@
-import * as React from 'react'
-import Axios from 'axios'
+import React, { useEffect, useState } from 'react';
+import Axios from 'axios';
 import { View, Text, StyleSheet } from 'react-native';
-import Constants from 'expo-constants';
+import { Network } from 'expo';
 
+export function Database() {
+  const [data, setData] = useState([]);
+  const [ipAddress, setIpAddress] = useState('');
 
-export function Database(){
-    const [data, setData] = React.useState([]);
+  useEffect(() => {
+    const fetchIpAddress = async () => {
+      try {
+        const localIpAddress = await Network.getIpAddressAsync(
+            Network.NetworkType.WIFI
+        );
+        console.log('Local IP Address:', localIpAddress);
+        setIpAddress(localIpAddress);
+      } catch (error) {
+        console.error('Error fetching local IP address:', error);
+      }
+    };
 
-    const getData = async () => {
-        try {
-        const response = await Axios.get('http://10.106.0.83:5000/getData')
+    fetchIpAddress();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await Axios.get(`http://${ipAddress}:3000/getData`);
         console.log(response.data);
         setData(response.data);
-        } catch (error) {
-            console.error('There has been a problem with your fetch operation:', error);
-        }
-    }
+      } catch (error) {
+        console.error('There has been a problem with your fetch operation:', error);
+      }
+    };
 
     const postData = async () => {
-        try {
-        const response = await Axios.post('http://10.106.0.83:5000/postData', {message: '\\[T]/'})
+      try {
+        const response = await Axios.post(`http://${ipAddress}:3000/postData`, { message: 'test other' });
         console.log(response.data);
         setData(response.data);
-        } catch (error) {
-            console.error('There has been a problem with your post operation:', error);
-        }
+      } catch (error) {
+        console.error('There has been a problem with your post operation:', error);
+      }
+    };
+
+    if (ipAddress) {
+      fetchData();
+      postData();
     }
+  }, [ipAddress]);
 
-    React.useEffect(()=>{
-        postData();
-        getData();
-    },[]);
-
-    return (
-        <View>
-            <Text> "test",  {data.message} </Text>
-        </View>
-    );
+  return (
+    <View style={styles.container}>
+      <Text>Data: {JSON.stringify(data.message)}</Text>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection: 'column-reverse',
-        alignItems: 'center',
-        marginBottom: 20,
-    },
-    input: {
-        height: 40,
-        borderColor: 'gray',
-        borderWidth: 1,
-        width: '80%',
-    },
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
