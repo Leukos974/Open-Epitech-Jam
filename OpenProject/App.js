@@ -54,15 +54,6 @@ function Navigator() {
       }}
       />
       <Tab.Screen
-      name="db"
-      component={Database}
-      options={{
-        tabBarIcon: ({ color, size }) => (
-          <FontAwesome name="comment-o" color={color} size={size} />
-        ),
-      }}
-      />
-      <Tab.Screen
         name="Settings"
         component={SettingsScreen}
         options={{
